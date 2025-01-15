@@ -22,24 +22,26 @@
   </header>
 
   <main>
+    <!-- Home Page Section -->
     <section id="dashboard">
       <h2>Welcome to the Gold Portal</h2>
       <p>Choose an option from the navigation menu to get started.</p>
-    </section>
-   <div class="floating-images-container">
-      <div class="floating-image">
-        <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images%20(4).jpg" alt="Floating Image 1" />
-      </div>
-      <div class="floating-image">
-        <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images%20(2).jpg" alt="Floating Image 2" />
-      </div>
-      <div class="floating-image">
-        <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images%20(3).jpg" alt="Floating Image 3" />
-      </div>
-   </div>
- 
-  </main>
 
+      <!-- Floating Images only on Home Page -->
+      <div class="floating-images-container">
+        <div class="floating-image">
+          <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images%20(4).jpg" alt="Floating Image 1" />
+        </div>
+        <div class="floating-image">
+          <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images%20(2).jpg" alt="Floating Image 2" />
+        </div>
+        <div class="floating-image">
+          <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images%20(3).jpg" alt="Floating Image 3" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Timetable, Attendance, Wellness, and Absentee sections (hidden by default) -->
     <section id="viewTimetable" class="hidden">
       <h2>View Timetable</h2>
       <p>Search for a staff or student timetable:</p>
@@ -124,12 +126,24 @@
     </section>
   </main>
 
- 
+  <footer>
+    <p>&copy; 2025 Gold Portal. All rights reserved.</p>
+  </footer>
 
   <script>
     function showSection(sectionId) {
+      // Hide all sections
       document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+      
+      // Show the selected section
       document.getElementById(sectionId).classList.remove('hidden');
+
+      // Only show floating images in the Home (Dashboard) section
+      if (sectionId === 'dashboard') {
+        document.querySelector('.floating-images-container').style.display = 'flex';
+      } else {
+        document.querySelector('.floating-images-container').style.display = 'none';
+      }
     }
 
     document.querySelectorAll('.present, .absent').forEach(button => {
@@ -144,8 +158,3 @@
   </script>
 </body>
 </html>
-
-
- <footer>
-    <p>&copy; 2025 Gold Portal. All rights reserved.</p>
-  </footer>
