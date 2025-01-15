@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gold Portal</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
@@ -13,86 +13,126 @@
       <h1>Gold Portal</h1>
     </div>
     <nav>
-      <button id="attendanceBtn">Attendance</button>
-      <button id="timetableBtn">Timetables</button>
-      <button id="wellnessBtn">Wellness Center</button>
-      <button id="musicBtn">Music Lessons</button>
-      <button id="adminBtn">Absence Logs</button>
+      <button onclick="showSection('dashboard')">Dashboard</button>
+      <button onclick="showSection('viewTimetable')">View Timetable</button>
+      <button onclick="showSection('attendance')">Take Attendance</button>
+      <button onclick="showSection('wellnessCenter')">Wellness Center</button>
+      <button onclick="showSection('absenteeLog')">Absentee Log</button>
     </nav>
   </header>
-  
+
   <main>
-    <!-- Attendance Section -->
+    <section id="dashboard">
+      <h2>Welcome to the Gold Portal</h2>
+      <p>Choose an option from the navigation menu to get started.</p>
+    </section>
+
+    <section id="viewTimetable" class="hidden">
+      <h2>View Timetable</h2>
+      <p>Search for a staff or student timetable:</p>
+      <input type="text" placeholder="Enter name or ID" id="timetableSearch">
+      <button>Search</button>
+    </section>
+
     <section id="attendance" class="hidden">
-      <h2>Attendance</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Student</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Amy Wallace</td>
-            <td><button onclick="markAttendance('Amy Wallace')">Mark Present</button></td>
-          </tr>
-          <tr>
-            <td>Samu Mabena</td>
-            <td><button onclick="markAttendance('Samu Mabena')">Mark Present</button></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>Take Attendance</h2>
+      <p>Select a class and mark students:</p>
+      <select id="classSelector">
+        <option value="class1">Class 1A</option>
+        <option value="class2">Class 2B</option>
+        <option value="class3">Class 3C</option>
+      </select>
+      <div id="attendanceList">
+        <ul>
+          <li>
+            <span>Student 1</span>
+            <button class="present">Present</button>
+            <button class="absent">Absent</button>
+          </li>
+          <li>
+            <span>Student 2</span>
+            <button class="present">Present</button>
+            <button class="absent">Absent</button>
+          </li>
+          <li>
+            <span>Student 3</span>
+            <button class="present">Present</button>
+            <button class="absent">Absent</button>
+          </li>
+        </ul>
+      </div>
     </section>
-    
-    <!-- Timetables Section -->
-    <section id="timetables" class="hidden">
-      <h2>Timetables</h2>
-      <p>Search for a timetable:</p>
-      <input type="text" id="timetableSearch" placeholder="Enter name or ID">
-      <button onclick="searchTimetable()">Search</button>
-      <div id="timetableResults"></div>
-    </section>
-    
-    <!-- Wellness Center Section -->
-    <section id="wellness" class="hidden">
+
+    <section id="wellnessCenter" class="hidden">
       <h2>Wellness Center</h2>
-      <p>Approve student check-ins:</p>
-      <ul>
-        <li>Sophie Steyn - <button onclick="approveWellness('Sophie Steyn')">Approve</button></li>
-        <li>Louise Zulu - <button onclick="approveWellness('Louise Zulu')">Approve</button></li>
-      </ul>
+      <p>Manage student requests and track attendance at the Wellness Center.</p>
+      <div>
+        <label for="studentName">Enter Student Name: </label>
+        <input type="text" id="studentName" placeholder="Search for student">
+        <button>Search</button>
+      </div>
+      <div>
+        <label for="wellnessStatus">Student Wellness Status: </label>
+        <select id="wellnessStatus">
+          <option value="pending">Attended</option>
+          <option value="approved">Did Not Attend</option>
+          <option value="denied">Excused</option>
+        </select>
+        <button>Update Status</button>
+      </div>
+      <div id="wellnessLog">
+        <h3>Wellness Log</h3>
+        <ul>
+          <li><span>Student 1</span> - <span>Status: Attended</span></li>
+          <li><span>Student 2</span> - <span>Status: Did Not Attend</span></li>
+          <li><span>Student 3</span> - <span>Status: Excused</span></li>
+        </ul>
+      </div>
     </section>
-    
-    <!-- Music Lessons Section -->
-    <section id="music" class="hidden">
-      <h2>Music Lessons</h2>
-      <p>Track music lesson attendance:</p>
-      <ul>
-        <li>Paul Meyer - <button onclick="approveMusic('Paul Meyer')">Approve</button></li>
-        <li>Ariana Banda - <button onclick="approveMusic('Ariana Banda')">Approve</button></li>
-      </ul>
-    </section>
-    
-    <!-- Admin Section -->
-    <section id="admin" class="hidden">
-      <h2>Absence Logs</h2>
-      <form onsubmit="logAbsence(event)">
-        <label for="studentName">Student Name:</label>
-        <input type="text" id="studentName" required>
-        <label for="reason">Reason:</label>
-        <input type="text" id="reason" required>
-        <button type="submit">Log Absence</button>
-      </form>
-      <div id="absenceLogs"></div>
+
+    <section id="absenteeLog" class="hidden">
+      <h2>Absentee Log</h2>
+      <p>View and update student absentee records:</p>
+      <input type="text" id="absenteeSearch" placeholder="Search for student">
+      <button>Search</button>
+      <div id="absenteeList">
+        <h3>Absentee Records</h3>
+        <ul>
+          <li><span>Student 1</span> - <span>Reason: Sick</span></li>
+          <li><span>Student 2</span> - <span>Reason: Family Emergency</span></li>
+          <li><span>Student 3</span> - <span>Reason: Doctor's Appointment</span></li>
+        </ul>
+      </div>
+      <div>
+        <label for="absenceReason">Update Reason: </label>
+        <input type="text" id="absenceReason" placeholder="Enter reason">
+        <button>Update Absence</button>
+      </div>
     </section>
   </main>
-  
-  <footer>
-    <p>&copy; 2025 Gold Portal. All Rights Reserved.</p>
-    <p>Contact: admin@goldportal.com | Phone: +27 123 456 7890</p>
-  </footer>
-  
-  <script src="script.js"></script>
+
+ 
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    document.querySelectorAll('.present, .absent').forEach(button => {
+      button.addEventListener('click', function () {
+        const parent = this.parentNode;
+        const status = this.classList.contains('present') ? 'Present' : 'Absent';
+        parent.style.color = status === 'Present' ? 'green' : 'red';
+        parent.querySelector('.present').disabled = true;
+        parent.querySelector('.absent').disabled = true;
+      });
+    });
+  </script>
 </body>
 </html>
+
+
+ <footer>
+    <p>&copy; 2025 Gold Portal. All rights reserved.</p>
+  </footer>
