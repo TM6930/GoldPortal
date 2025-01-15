@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gold Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://assets.onecompiler.app/434dtae6m/4366e2s33/images-removebg-preview.png" alt="Gold Portal Logo">
+      <h1>Gold Portal</h1>
+    </div>
+    <nav>
+      <button id="attendanceBtn">Attendance</button>
+      <button id="timetableBtn">Timetables</button>
+      <button id="wellnessBtn">Wellness Center</button>
+      <button id="musicBtn">Music Lessons</button>
+      <button id="adminBtn">Absence Logs</button>
+    </nav>
+  </header>
+  
+  <main>
+    <!-- Attendance Section -->
+    <section id="attendance" class="hidden">
+      <h2>Attendance</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Amy Wallace</td>
+            <td><button onclick="markAttendance('Amy Wallace')">Mark Present</button></td>
+          </tr>
+          <tr>
+            <td>Samu Mabena</td>
+            <td><button onclick="markAttendance('Samu Mabena')">Mark Present</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <!-- Timetables Section -->
+    <section id="timetables" class="hidden">
+      <h2>Timetables</h2>
+      <p>Search for a timetable:</p>
+      <input type="text" id="timetableSearch" placeholder="Enter name or ID">
+      <button onclick="searchTimetable()">Search</button>
+      <div id="timetableResults"></div>
+    </section>
+    
+    <!-- Wellness Center Section -->
+    <section id="wellness" class="hidden">
+      <h2>Wellness Center</h2>
+      <p>Approve student check-ins:</p>
+      <ul>
+        <li>Sophie Steyn - <button onclick="approveWellness('Sophie Steyn')">Approve</button></li>
+        <li>Louise Zulu - <button onclick="approveWellness('Louise Zulu')">Approve</button></li>
+      </ul>
+    </section>
+    
+    <!-- Music Lessons Section -->
+    <section id="music" class="hidden">
+      <h2>Music Lessons</h2>
+      <p>Track music lesson attendance:</p>
+      <ul>
+        <li>Paul Meyer - <button onclick="approveMusic('Paul Meyer')">Approve</button></li>
+        <li>Ariana Banda - <button onclick="approveMusic('Ariana Banda')">Approve</button></li>
+      </ul>
+    </section>
+    
+    <!-- Admin Section -->
+    <section id="admin" class="hidden">
+      <h2>Absence Logs</h2>
+      <form onsubmit="logAbsence(event)">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" required>
+        <label for="reason">Reason:</label>
+        <input type="text" id="reason" required>
+        <button type="submit">Log Absence</button>
+      </form>
+      <div id="absenceLogs"></div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Gold Portal. All Rights Reserved.</p>
+    <p>Contact: admin@goldportal.com | Phone: +27 123 456 7890</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
