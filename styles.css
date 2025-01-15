@@ -48,46 +48,6 @@ header nav button:hover {
   transform: scale(1.05);
 }
 
-/* Main Content */
-main {
-  padding: 40px;
-}
-
-/* Floating Images Container */
-.floating-images-container {
-  display: flex;
-  justify-content: space-around; /* Align images next to each other */
-  position: relative; /* Allow images to float */
-  margin-top: 30px;
-}
-
-/* Floating Image Styles */
-.floating-image {
-  position: relative;
-  animation: float 6s ease-in-out infinite;
-  margin: 0 20px;
-}
-
-.floating-image img {
-  width: 445px; /* Adjust size of images */
-  height: auto;
-  border-radius: 2px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* Floating Animation */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 main h2 {
   color: #000;
   margin-bottom: 20px;
@@ -173,6 +133,46 @@ body {
 
 main {
   flex: 1; /* Take up the remaining space */
+}
+
+/* Main Content */
+main {
+  padding: 40px;
+}
+
+/* Floating Images Container */
+.floating-images-container {
+  display: flex;
+  justify-content: space-around; /* Align images next to each other */
+  position: relative; /* Allow images to float */
+  margin-top: 30px;
+}
+
+/* Floating Image Styles */
+.floating-image {
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+  margin: 0 20px;
+}
+
+.floating-image img {
+  width: 445px; /* Adjust size of images */
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* Footer */
